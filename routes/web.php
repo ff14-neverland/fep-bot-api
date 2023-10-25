@@ -19,3 +19,4 @@ $router->get('/', function () use ($router) {
 
 $router->get('status', ['uses' => 'ApiController@showStatus']);
 $router->get('battle', ['uses' => 'ApiController@startBattle']);
+$router->get('level', ['uses' => 'ApiController@levelUp']);
