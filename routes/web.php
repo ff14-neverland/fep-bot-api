@@ -17,5 +17,5 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
-$router->get('stauts', ['uses' => 'ApiController@showStatus']);
+$router->get('status', ['uses' => 'ApiController@showStatus']);
 $router->get('battle', ['uses' => 'ApiController@startBattle']);

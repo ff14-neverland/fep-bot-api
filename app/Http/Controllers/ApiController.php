@@ -3,31 +3,14 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use App\Libraries\BattleHelper;
 
 class ApiController extends Controller {
 
   /* Show Status, Item and Spt */
   public function showStatus(Request $request){
     $chara = $request->get('chara');
-    $chara_status = DB::table('zh')
-    ->select('zh.*')
-    ->where('zh.zh', $chara)
-    ->first();
-
-    $status_info = [
-      '名称' => $chara_status->zh,
-      'HP' => $chara_status->hp,
-      '力量' => $chara_status->ll,
-      '魔力' => $chara_status->ml,
-      '技巧' => $chara_status->jq,
-      '幸运' => $chara_status->xy,
-      '速度' => $chara_status->sd,
-      '防御' => $chara_status->fy,
-      '魔防' => $chara_status->mf,
-      '支援' => $chara_status->zy,
-      '其他' => $chara_status->qtxx,
-    ];
-
+    $status_info = BattleHelper::loadCharaStatus($chara);
     return response()->json($status_info);
   }
 
@@ -35,18 +18,17 @@ class ApiController extends Controller {
     $chara1 = $request->get('chara1');
     $chara2 = $request->get('chara2');
 
-    $chara1_status = DB::table('zh')
-    ->select('zh.*')
-    ->where('zh.zh', $chara1)
-    ->first();
+    //进攻方
+    $chara1_result = BattleHelper::getBattleResult($chara1, $chara2);
+    //反击方
+    $chara2_result = BattleHelper::getBattleResult($chara2, $chara1);
+    
+    $battle_result = [
+      'chara1' => $chara1_result,
+      'chara2' => $chara2_result,
+    ];
 
-    $chara2_status = DB::table('zh')
-    ->select('zh.*')
-    ->where('zh.zh', $chara2)
-    ->first();
-
-    //$phyical_damage =
-    return response()->json($chara1_status);
+    return response()->json($battle_result);
   }
 
   public function updateIngredient($id, Request $request){
