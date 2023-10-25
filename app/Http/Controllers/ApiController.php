@@ -33,13 +33,7 @@ class ApiController extends Controller {
   public function levelUp(Request $request){
     $chara = $request->get('chara');
     $level_up_result = CommonHelper::getLevelUpResult($chara);
-    $new_value = CommonHelper::updateAbility($chara, $level_up_result);
 
-    $result = [
-      'level_up_result' => $level_up_result,
-      'new_value' => $new_value,
-    ];
-
-    return response()->json($result);
+    return response()->json($level_up_result);
   }
 }
