@@ -144,7 +144,31 @@ class CommonHelper {
     return $level_up_result;
   }
 
-  //升級
+  public static function updateInfo($chara, $type, $text){
+    switch ($type){
+      case 'other':
+      $update_field = [
+        'qtxx' => $text,
+      ];
+      $update_result = DB::table('zh')
+      ->where('zh.zh', $chara)
+      ->update($update_field);
+      return $update_field;
+      break;
+
+      case 'support':
+      $update_field = [
+        'zy' => $text,
+      ];
+      $update_result = DB::table('zh')
+      ->where('zh.zh', $chara)
+      ->update($update_field);
+      return $update_field;
+      break;
+    }
+  }
+
+  //自動升級，用不到(。)
   public static function updateAbility($chara, $level_up_result){
     $chara_status = DB::table('zh')
     ->select('zh.*')

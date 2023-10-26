@@ -36,4 +36,18 @@ class ApiController extends Controller {
 
     return response()->json($level_up_result);
   }
+
+  public function updateCharaInfo(Request $request){
+    $data = $request->json();
+    //角色名
+    $chara = $data->get('chara');
+    //類型
+    $type = $data->get('type');
+    //文字
+    $text = $data->get('text');
+
+    $update_result = CommonHelper::updateInfo($chara, $type, $text);
+
+    return response()->json($update_result);
+  }
 }
