@@ -104,14 +104,29 @@ class CommonHelper {
     $magical_defense_growth_rate = $chara_status->mfcz;
 
     //擲骰決定升級結果
-    $hp_growth_result = rand(1, 100);
-    $power_growth_result = rand(1, 100);
-    $magical_growth_result = rand(1, 100);
-    $skill_growth_result = rand(1, 100);
-    $luck_growth_result = rand(1, 100);
-    $speed_growth_result = rand(1, 100);
-    $defense_growth_result = rand(1, 100);
-    $magical_defense_growth_result = rand(1, 100);
+    $hp_growth_result = mt_rand(1, 100);
+    $level_up_result['hp_growth_result'] = $hp_growth_result;
+
+    $power_growth_result = mt_rand(1, 100);
+    $level_up_result['power_growth_result'] = $power_growth_result;
+
+    $magical_growth_result = mt_rand(1, 100);
+    $level_up_result['magical_growth_result'] = $magical_growth_result;
+
+    $skill_growth_result = mt_rand(1, 100);
+    $level_up_result['skill_growth_result'] = $skill_growth_result;
+
+    $luck_growth_result = mt_rand(1, 100);
+    $level_up_result['luck_growth_result'] = $luck_growth_result;
+
+    $speed_growth_result = mt_rand(1, 100);
+    $level_up_result['speed_growth_result'] = $speed_growth_result;
+
+    $defense_growth_result = mt_rand(1, 100);
+    $level_up_result['defense_growth_result'] = $defense_growth_result;
+
+    $magical_defense_growth_result = mt_rand(1, 100);
+    $level_up_result['magical_defense_growth_result'] = $magical_defense_growth_result;
 
     /*
     随机生成8个数字，范围1~100，分别和这8项比对，小于等于这个数则算作该项成功，大于这个数算作该项失败。

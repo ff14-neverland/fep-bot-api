@@ -47,8 +47,13 @@ class Handler extends ExceptionHandler
      *
      * @throws \Throwable
      */
-    public function render($request, Throwable $exception)
-    {
-        return parent::render($request, $exception);
-    }
+     public function render($request, Throwable $exception)
+     {
+
+         if (env('APP_DEBUG')) {
+             dd($exception);
+         }
+         
+         return parent::render($request, $exception);
+     }
 }

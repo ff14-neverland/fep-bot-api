@@ -13,10 +13,6 @@
 |
 */
 
-$router->get('/', function () use ($router) {
-    return $router->app->version();
-});
-
 //API Part
 $router->get('status', ['uses' => 'ApiController@showStatus']);
 $router->get('battle', ['uses' => 'ApiController@startBattle']);
@@ -24,3 +20,5 @@ $router->get('level', ['uses' => 'ApiController@levelUp']);
 $router->post('update', ['uses' => 'ApiController@updateCharaInfo']);
 
 //UI Part
+$router->get('/', ['uses' => 'UiController@showIndex']);
+$router->post('/ui/battle', ['uses' => 'UiController@getBattleResult']);
