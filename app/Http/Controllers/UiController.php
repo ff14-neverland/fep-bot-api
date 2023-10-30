@@ -10,6 +10,8 @@ class UiController extends Controller {
   public function showIndex(Request $request){
     $battle_records = DB::table('battle_record')
     ->select('battle_record.*')
+    ->orderBy('datetime', 'desc')
+    ->limit(10)
     ->get();
     return view('index')->with('battle_records', $battle_records);
   }
@@ -40,5 +42,17 @@ class UiController extends Controller {
     ->insert($battle_result_fields);
 
     return redirect('/');
+  }
+
+  public function showStatusForm(Request $request){
+    return view('status');
+  }
+
+  public function getCharaStatus(Request $request){
+    $chara = $request->get('chara');
+    $status = CommonHelper::loadCharaStatus($chara);
+    $status_full_text = "【{$chara} HP {$status['HP']}， 力量 {$status['力量']}，魔力 {$status['魔力']}，技巧 {$status['技巧']}，幸运 {$status['幸运']}，速度 {$status['速度']}，防御 {$status['防御']}，魔防 {$status['魔防']}】";
+    $status['full_text'] = $status_full_text;
+    return view('status')->with('status_info', $status);
   }
 }

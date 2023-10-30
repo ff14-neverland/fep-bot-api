@@ -21,4 +21,6 @@ $router->post('update', ['uses' => 'ApiController@updateCharaInfo']);
 
 //UI Part
 $router->get('/', ['uses' => 'UiController@showIndex']);
+$router->get('/ui/status', ['uses' => 'UiController@showStatusForm']);
+$router->post('/ui/status', ['uses' => 'UiController@getCharaStatus']);
 $router->post('/ui/battle', ['uses' => 'UiController@getBattleResult']);

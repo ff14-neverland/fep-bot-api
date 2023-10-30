@@ -8,6 +8,10 @@ body{
   padding: 1.1rem 1rem;
 }
 
+.navbar-nav{
+  flex-direction: row;
+}
+
 .main-content{
   margin-top: 20px;
   padding: 2em;
@@ -15,6 +19,11 @@ body{
 
 .battle-result{
    margin-top: 50px;
+}
+
+.status-text{
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
 
 @media screen and (max-width: 768px){
