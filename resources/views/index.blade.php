@@ -42,7 +42,7 @@
                 <td>{!! $battle_record->chara1 !!} </td>
                 <td>{!! $battle_record->chara2 !!} </td>
                 <td>{!! $battle_record->battle_result !!} </td>
-                <td>{{ Carbon\Carbon::createFromTimestamp($battle_record->datetime) }}</td>
+                <td>{{ Carbon\Carbon::createFromTimestamp($battle_record->datetime, 'Asia/Hong_Kong') }}</td>
               </tr>
             @endforeach
           </tbody>

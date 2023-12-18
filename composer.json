@@ -7,7 +7,9 @@
     "require": {
         "php": "^7.3|^8.0",
         "laravel/lumen-framework": "^8.3.1",
-        "nesbot/carbon": "^2.71"
+        "mk-j/php_xlsxwriter": "^0.39.0",
+        "nesbot/carbon": "^2.71",
+        "phpoffice/phpspreadsheet": "^1.29"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

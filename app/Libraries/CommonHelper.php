@@ -3,6 +3,31 @@ namespace App\Libraries;
 use Illuminate\Support\Facades\DB;
 
 class CommonHelper {
+  public static function loadAllChara(){
+    $status_infos = [];
+    $charas = DB::table('zh')
+    ->select('zh.*')
+    ->get();
+
+    foreach($charas as $chara){
+      $status_info = [
+        '名称' => $chara->zh,
+        'HP' => $chara->hp,
+        '力量' => $chara->ll,
+        '魔力' => $chara->ml,
+        '技巧' => $chara->jq,
+        '幸运' => $chara->xy,
+        '速度' => $chara->sd,
+        '防御' => $chara->fy,
+        '魔防' => $chara->mf,
+        '支援' => $chara->zy,
+        '其他' => $chara->qtxx,
+      ];
+      $status_infos[] = $status_info;
+    }
+    return $status_infos;
+  }
+
   public static function loadCharaStatus($chara){
     $chara_status = DB::table('zh')
     ->select('zh.*')
